@@ -1,0 +1,396 @@
+openapi: 3.0.3
+info:
+  title: php-test-work5
+  description: 'Простая задача по REST API для сущности "Задачи". Можно сортировать, фильтровать по выполненности задачи, добавить, изменить, удалить'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8080'
+paths:
+  /api/tasks:
+    get:
+      summary: ''
+      operationId: getApiTasks
+      description: ''
+      parameters:
+        - in: query
+          name: status
+          description: ''
+          example: '1'
+          schema:
+            type: string
+            enum:
+              - '1'
+              - '0'
+        - in: query
+          name: order
+          description: ''
+          example: finished_at
+          schema:
+            type: string
+            enum:
+              - id
+              - name
+              - description
+              - finished_at
+        - in: query
+          name: direction
+          description: ''
+          example: asc
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: 'quis fugit'
+                      description: ''
+                      finished_at: '2024-04-03'
+                    -
+                      id: 2
+                      name: 'sunt alias voluptate'
+                      description: 'Nemo consequatur reprehenderit odio expedita in iusto itaque. In laboriosam molestias provident quaerat a molestiae enim est. Quidem est odit illum aut et.'
+                      finished_at: '2024-08-23'
+                    -
+                      id: 3
+                      name: 'aut et consequatur'
+                      description: 'Dolor labore soluta pariatur libero. Ab est est eius eaque aut corrupti adipisci. Dolorum dolor itaque eos corporis quasi accusantium debitis.'
+                      finished_at: '2024-09-02'
+                    -
+                      id: 4
+                      name: 'molestiae animi'
+                      description: ''
+                      finished_at: null
+                    -
+                      id: 5
+                      name: 'dolore quia ipsum'
+                      description: ''
+                      finished_at: null
+                    -
+                      id: 6
+                      name: 'totam velit'
+                      description: 'Labore facere ipsa fuga ea et nihil quaerat.'
+                      finished_at: '2024-02-27'
+                    -
+                      id: 7
+                      name: 'ipsa nobis'
+                      description: 'Inventore repudiandae aut inventore vitae ea quos. Voluptatibus in animi sequi similique. Delectus nihil eum veritatis harum quia eveniet.'
+                      finished_at: null
+                    -
+                      id: 8
+                      name: 'aspernatur placeat'
+                      description: 'Distinctio quia perferendis suscipit omnis optio nihil in. Ut praesentium corporis ab dolor dolores.'
+                      finished_at: '2024-04-27'
+                    -
+                      id: 9
+                      name: 'officia possimus'
+                      description: ''
+                      finished_at: '2024-08-20'
+                    -
+                      id: 10
+                      name: 'harum repellat'
+                      description: 'Optio possimus omnis qui vitae. Sunt dolorem explicabo aut eos delectus et.'
+                      finished_at: '2024-10-28'
+                  links:
+                    first: 'http://localhost:8080/api/tasks?page=1'
+                    last: 'http://localhost:8080/api/tasks?page=6'
+                    prev: null
+                    next: 'http://localhost:8080/api/tasks?page=2'
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 6
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost:8080/api/tasks?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: 'http://localhost:8080/api/tasks?page=2'
+                        label: '2'
+                        active: false
+                      -
+                        url: 'http://localhost:8080/api/tasks?page=3'
+                        label: '3'
+                        active: false
+                      -
+                        url: 'http://localhost:8080/api/tasks?page=4'
+                        label: '4'
+                        active: false
+                      -
+                        url: 'http://localhost:8080/api/tasks?page=5'
+                        label: '5'
+                        active: false
+                      -
+                        url: 'http://localhost:8080/api/tasks?page=6'
+                        label: '6'
+                        active: false
+                      -
+                        url: 'http://localhost:8080/api/tasks?page=2'
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://localhost:8080/api/tasks'
+                    per_page: 10
+                    to: 10
+                    total: 59
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'quis fugit'
+                        description: ''
+                        finished_at: '2024-04-03'
+                      -
+                        id: 2
+                        name: 'sunt alias voluptate'
+                        description: 'Nemo consequatur reprehenderit odio expedita in iusto itaque. In laboriosam molestias provident quaerat a molestiae enim est. Quidem est odit illum aut et.'
+                        finished_at: '2024-08-23'
+                      -
+                        id: 3
+                        name: 'aut et consequatur'
+                        description: 'Dolor labore soluta pariatur libero. Ab est est eius eaque aut corrupti adipisci. Dolorum dolor itaque eos corporis quasi accusantium debitis.'
+                        finished_at: '2024-09-02'
+                      -
+                        id: 4
+                        name: 'molestiae animi'
+                        description: ''
+                        finished_at: null
+                      -
+                        id: 5
+                        name: 'dolore quia ipsum'
+                        description: ''
+                        finished_at: null
+                      -
+                        id: 6
+                        name: 'totam velit'
+                        description: 'Labore facere ipsa fuga ea et nihil quaerat.'
+                        finished_at: '2024-02-27'
+                      -
+                        id: 7
+                        name: 'ipsa nobis'
+                        description: 'Inventore repudiandae aut inventore vitae ea quos. Voluptatibus in animi sequi similique. Delectus nihil eum veritatis harum quia eveniet.'
+                        finished_at: null
+                      -
+                        id: 8
+                        name: 'aspernatur placeat'
+                        description: 'Distinctio quia perferendis suscipit omnis optio nihil in. Ut praesentium corporis ab dolor dolores.'
+                        finished_at: '2024-04-27'
+                      -
+                        id: 9
+                        name: 'officia possimus'
+                        description: ''
+                        finished_at: '2024-08-20'
+                      -
+                        id: 10
+                        name: 'harum repellat'
+                        description: 'Optio possimus omnis qui vitae. Sunt dolorem explicabo aut eos delectus et.'
+                        finished_at: '2024-10-28'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'quis fugit'
+                        description:
+                          type: string
+                          example: ''
+                        finished_at:
+                          type: string
+                          example: '2024-04-03'
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: 'http://localhost:8080/api/tasks?page=1'
+                      last:
+                        type: string
+                        example: 'http://localhost:8080/api/tasks?page=6'
+                      prev:
+                        type: string
+                        example: null
+                      next:
+                        type: string
+                        example: 'http://localhost:8080/api/tasks?page=2'
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 6
+                      links:
+                        type: array
+                        example:
+                          -
+                            url: null
+                            label: '&laquo; Previous'
+                            active: false
+                          -
+                            url: 'http://localhost:8080/api/tasks?page=1'
+                            label: '1'
+                            active: true
+                          -
+                            url: 'http://localhost:8080/api/tasks?page=2'
+                            label: '2'
+                            active: false
+                          -
+                            url: 'http://localhost:8080/api/tasks?page=3'
+                            label: '3'
+                            active: false
+                          -
+                            url: 'http://localhost:8080/api/tasks?page=4'
+                            label: '4'
+                            active: false
+                          -
+                            url: 'http://localhost:8080/api/tasks?page=5'
+                            label: '5'
+                            active: false
+                          -
+                            url: 'http://localhost:8080/api/tasks?page=6'
+                            label: '6'
+                            active: false
+                          -
+                            url: 'http://localhost:8080/api/tasks?page=2'
+                            label: 'Next &raquo;'
+                            active: false
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: null
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            active:
+                              type: boolean
+                              example: false
+                      path:
+                        type: string
+                        example: 'http://localhost:8080/api/tasks'
+                      per_page:
+                        type: integer
+                        example: 10
+                      to:
+                        type: integer
+                        example: 10
+                      total:
+                        type: integer
+                        example: 59
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiTasks
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: blcifcirgnlibhfkamesbnbo
+                  nullable: false
+                description:
+                  type: string
+                  description: 'Must not be greater than 65535 characters.'
+                  example: 'Culpa sit qui quisquam.'
+                  nullable: true
+                finished_at:
+                  type: string
+                  description: 'Must be a valid date in the format <code>Y-m-d</code>.'
+                  example: '2024-11-10'
+                  nullable: true
+              required:
+                - name
+      security: []
+  '/api/tasks/{id}':
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: evulzgbevuoanntfwqnmq
+                  nullable: false
+                description:
+                  type: string
+                  description: 'Must not be greater than 65535 characters.'
+                  example: 'Sint nam nemo quia beatae est velit ut quae.'
+                  nullable: true
+                finished_at:
+                  type: string
+                  description: 'Must be a valid date in the format <code>Y-m-d</code>.'
+                  example: '2024-11-10'
+                  nullable: true
+              required:
+                - name
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the task.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
